@@ -28,13 +28,13 @@ class TestMultiQCJob(unittest.TestCase):
 
         base_path = join(self.output_path, 'MultiQCJob')
         file_names = []
-        makedirs(join(base_path, 'Feist_11661', 'trimmed_sequences'),
+        makedirs(join(base_path, 'Feist_2', 'trimmed_sequences'),
                  exist_ok=True)
         makedirs(join(base_path, 'Gerwick_6123', 'filtered_sequences'),
                  exist_ok=True)
 
         file_names.append(join(base_path,
-                               'Feist_11661',
+                               'Feist_2',
                                'trimmed_sequences',
                                ('CDPH-SAL_Salmonella_Typhi_MDL-143_S1_L003_R1_'
                                 '001.trimmed_fastqc.html')))

@@ -42,86 +42,86 @@ class FakeClient():
                       'SampleData': 'SampleData',
                       'uploads': 'uploads'}
 
-        self.samples_in_13059 = ['13059.SP331130A04', '13059.AP481403B02',
-                                 '13059.LP127829A02', '13059.BLANK3.3B',
-                                 '13059.EP529635B02', '13059.EP542578B04',
-                                 '13059.EP446602B01', '13059.EP121011B01',
-                                 '13059.EP636802A01', '13059.SP573843A04']
+        self.samples_in_3 = ['3.SP331130A04', '3.AP481403B02',
+                             '3.LP127829A02', '3.BLANK3.3B',
+                             '3.EP529635B02', '3.EP542578B04',
+                             '3.EP446602B01', '3.EP121011B01',
+                             '3.EP636802A01', '3.SP573843A04']
 
         # note these samples have known tids, but aren't in good-sample-sheet.
-        self.samples_in_11661 = ['11661.1.24', '11661.1.57', '11661.1.86',
-                                 '11661.10.17', '11661.10.41', '11661.10.64',
-                                 '11661.11.18', '11661.11.43', '11661.11.64',
-                                 '11661.12.15']
+        self.samples_in_2 = ['1.1.24', '1.1.57', '1.1.86',
+                             '1.10.17', '1.10.41', '1.10.64',
+                             '1.11.18', '1.11.43', '1.11.64',
+                             '1.12.15']
 
         self.samples_in_6123 = ['3A', '4A', '5B', '6A', 'BLANK.41.12G', '7A',
                                 '8A', 'ISB', 'GFR', '6123']
 
-        self.info_in_11661 = {'number-of-samples': 10,
-                              'categories': ['sample_type', 'tube_id']}
+        self.info_in_2 = {'number-of-samples': 10,
+                          'categories': ['sample_type', 'tube_id']}
 
-        self.info_in_13059 = {'number-of-samples': 10,
-                              'categories': ['anonymized_name',
-                                             'collection_timestamp',
-                                             'description',
-                                             'dna_extracted',
-                                             'elevation', 'empo_1',
-                                             'empo_2', 'empo_3',
-                                             'env_biome', 'env_feature',
-                                             'env_material',
-                                             'env_package',
-                                             'geo_loc_name', 'host_age',
-                                             'host_age_units',
-                                             'host_body_habitat',
-                                             'host_body_mass_index',
-                                             'host_body_product',
-                                             'host_body_site',
-                                             'host_common_name',
-                                             'host_height',
-                                             'host_height_units',
-                                             'host_life_stage',
-                                             'host_scientific_name',
-                                             'host_subject_id',
-                                             'host_taxid', 'host_weight',
-                                             'host_weight_units',
-                                             'latitude', 'longitude',
-                                             'nyuid',
-                                             'physical_specimen_location',
-                                             'physical_specimen_remaining',
-                                             'predose_time',
-                                             'sample_type',
-                                             'scientific_name', 'sex',
-                                             'subject_id', 'taxon_id',
-                                             'title', 'tube_id']}
+        self.info_in_3 = {'number-of-samples': 10,
+                          'categories': ['anonymized_name',
+                                         'collection_timestamp',
+                                         'description',
+                                         'dna_extracted',
+                                         'elevation', 'empo_1',
+                                         'empo_2', 'empo_3',
+                                         'env_biome', 'env_feature',
+                                         'env_material',
+                                         'env_package',
+                                         'geo_loc_name', 'host_age',
+                                         'host_age_units',
+                                         'host_body_habitat',
+                                         'host_body_mass_index',
+                                         'host_body_product',
+                                         'host_body_site',
+                                         'host_common_name',
+                                         'host_height',
+                                         'host_height_units',
+                                         'host_life_stage',
+                                         'host_scientific_name',
+                                         'host_subject_id',
+                                         'host_taxid', 'host_weight',
+                                         'host_weight_units',
+                                         'latitude', 'longitude',
+                                         'nyuid',
+                                         'physical_specimen_location',
+                                         'physical_specimen_remaining',
+                                         'predose_time',
+                                         'sample_type',
+                                         'scientific_name', 'sex',
+                                         'subject_id', 'taxon_id',
+                                         'title', 'tube_id']}
 
         # Study not in qiita-rc. Faking results.
         self.info_in_6123 = {'number-of-samples': 10,
                              'categories': ['sample_type', 'subject_id',
                                             'title']}
 
-        self.tids_13059 = {"header": ["tube_id"],
-                           "samples": {'13059.SP331130A04': ['SP331130A-4'],
-                                       '13059.AP481403B02': ['AP481403B-2'],
-                                       '13059.LP127829A02': ['LP127829A-2'],
-                                       '13059.BLANK3.3B': ['BLANK3.3B'],
-                                       '13059.EP529635B02': ['EP529635B-2'],
-                                       '13059.EP542578B04': ['EP542578B-4'],
-                                       '13059.EP446602B01': ['EP446602B-1'],
-                                       '13059.EP121011B01': ['EP121011B-1'],
-                                       '13059.EP636802A01': ['EP636802A-1'],
-                                       '13059.SP573843A04': ['SP573843A-4']}}
+        self.tids_3 = {"header": ["tube_id"],
+                       "samples": {'3.SP331130A04': ['SP331130A-4'],
+                                   '3.AP481403B02': ['AP481403B-2'],
+                                   '3.LP127829A02': ['LP127829A-2'],
+                                   '3.BLANK3.3B': ['BLANK3.3B'],
+                                   '3.EP529635B02': ['EP529635B-2'],
+                                   '3.EP542578B04': ['EP542578B-4'],
+                                   '3.EP446602B01': ['EP446602B-1'],
+                                   '3.EP121011B01': ['EP121011B-1'],
+                                   '3.EP636802A01': ['EP636802A-1'],
+                                   '3.SP573843A04': ['SP573843A-4']}}
 
-        self.tids_11661 = {"header": ["tube_id"],
-                           "samples": {"11661.1.24": ["1.24"],
-                                       "11661.1.57": ["1.57"],
-                                       "11661.1.86": ["1.86"],
-                                       "11661.10.17": ["10.17"],
-                                       "11661.10.41": ["10.41"],
-                                       "11661.10.64": ["10.64"],
-                                       "11661.11.18": ["11.18"],
-                                       "11661.11.43": ["11.43"],
-                                       "11661.11.64": ["11.64"],
-                                       "11661.12.15": ["12.15"]}}
+        self.tids_2 = {"header": ["tube_id"],
+                       "samples": {"1.1.24": ["1.24"],
+                                   "1.1.57": ["1.57"],
+                                   "1.1.86": ["1.86"],
+                                   "1.10.17": ["10.17"],
+                                   "1.10.41": ["10.41"],
+                                   "1.10.64": ["10.64"],
+                                   "1.11.18": ["11.18"],
+                                   "1.11.43": ["11.43"],
+                                   "1.11.64": ["11.64"],
+                                   "1.12.15": ["12.15"]}}
 
         for key in self.qdirs:
             self.qdirs[key] = join(self.base_path, self.qdirs[key])
@@ -134,12 +134,12 @@ class FakeClient():
         self.saved_posts = {}
 
     def get(self, url):
-        m = {'/api/v1/study/11661/samples': self.samples_in_11661,
-             '/api/v1/study/11661/samples/categories=tube_id': self.tids_11661,
-             '/api/v1/study/11661/samples/info': self.info_in_11661,
-             '/api/v1/study/13059/samples': self.samples_in_13059,
-             '/api/v1/study/13059/samples/categories=tube_id': self.tids_13059,
-             '/api/v1/study/13059/samples/info': self.info_in_13059,
+        m = {'/api/v1/study/11661/samples': self.samples_in_2,
+             '/api/v1/study/11661/samples/categories=tube_id': self.tids_2,
+             '/api/v1/study/11661/samples/info': self.info_in_2,
+             '/api/v1/study/13059/samples': self.samples_in_3,
+             '/api/v1/study/13059/samples/categories=tube_id': self.tids_3,
+             '/api/v1/study/13059/samples/info': self.info_in_3,
              '/api/v1/study/6123/samples': self.samples_in_6123,
              '/api/v1/study/6123/samples/info': self.info_in_6123,
              '/qiita_db/artifacts/types/': self.qdirs}
@@ -261,9 +261,9 @@ class TestHelpers(TestCase):
         wf.generate_special_map()
 
         obs = wf.special_map
-        exp = [('NYU_BMS_Melanoma_13059',
+        exp = [('NYU_BMS_Melanoma_3',
                 join(self.fake_client.base_path, 'uploads/13059'), '13059'),
-               ('Feist_11661',
+               ('Feist_2',
                 join(self.fake_client.base_path, 'uploads/11661'), '11661'),
                ('Gerwick_6123',
                 join(self.fake_client.base_path, 'uploads/6123'), '6123')]
@@ -275,9 +275,9 @@ class TestHelpers(TestCase):
         wf.generate_special_map()
         obs = wf.pipeline.get_project_info()
 
-        exp = [{'project_name': 'NYU_BMS_Melanoma_13059', 'qiita_id': '13059',
+        exp = [{'project_name': 'NYU_BMS_Melanoma_3', 'qiita_id': '13059',
                 'contains_replicates': False},
-               {'project_name': 'Feist_11661', 'qiita_id': '11661',
+               {'project_name': 'Feist_2', 'qiita_id': '11661',
                 'contains_replicates': False},
                {'project_name': 'Gerwick_6123', 'qiita_id': '6123',
                 'contains_replicates': False}]
@@ -294,16 +294,16 @@ class TestHelpers(TestCase):
                        'BLANK3.3B', 'AP481403B02', 'LP127829A02',
                        'EP636802A01'}
 
-        exp_tids = {'13059.SP331130A04': ['SP331130A-4'],
-                    '13059.AP481403B02': ['AP481403B-2'],
-                    '13059.LP127829A02': ['LP127829A-2'],
-                    '13059.BLANK3.3B': ['BLANK3.3B'],
-                    '13059.EP529635B02': ['EP529635B-2'],
-                    '13059.EP542578B04': ['EP542578B-4'],
-                    '13059.EP446602B01': ['EP446602B-1'],
-                    '13059.EP121011B01': ['EP121011B-1'],
-                    '13059.EP636802A01': ['EP636802A-1'],
-                    '13059.SP573843A04': ['SP573843A-4']}
+        exp_tids = {'3.SP331130A04': ['SP331130A-4'],
+                    '3.AP481403B02': ['AP481403B-2'],
+                    '3.LP127829A02': ['LP127829A-2'],
+                    '3.BLANK3.3B': ['BLANK3.3B'],
+                    '3.EP529635B02': ['EP529635B-2'],
+                    '3.EP542578B04': ['EP542578B-4'],
+                    '3.EP446602B01': ['EP446602B-1'],
+                    '3.EP121011B01': ['EP121011B-1'],
+                    '3.EP636802A01': ['EP636802A-1'],
+                    '3.SP573843A04': ['SP573843A-4']}
 
         self.assertEqual(obs_samples, exp_samples)
         self.assertDictEqual(obs_tids, exp_tids)
@@ -337,8 +337,8 @@ class TestHelpers(TestCase):
         # step and fake_client is used.
         wf._project_metadata_check()
 
-        self.fake_client.info_in_11661['categories'].append('well_id_384')
-        self.fake_client.info_in_13059['categories'].append('well_id_384')
+        self.fake_client.info_in_2['categories'].append('well_id_384')
+        self.fake_client.info_in_3['categories'].append('well_id_384')
 
         msg = ("'well_id_384' exists in Qiita study 13059's sample metadata"
                "\n'well_id_384' exists in Qiita study 11661's sample metadata")

@@ -861,16 +861,16 @@ class TestConvertJob(unittest.TestCase):
 
         # mimic the Data/Fastq/<Project> hierarchy.
         fastq_base = join(faked_output_path, 'Data', 'Fastq')
-        makedirs(join(fastq_base, 'Feist_11661'), exist_ok=True)
+        makedirs(join(fastq_base, 'Feist_2'), exist_ok=True)
         makedirs(join(fastq_base, 'Gerwick_6123'), exist_ok=True)
-        makedirs(join(fastq_base, 'NYU_BMS_Melanoma_13059'), exist_ok=True)
+        makedirs(join(fastq_base, 'NYU_BMS_Melanoma_3'), exist_ok=True)
 
         # generate filenames and paths for the dummy fastq files.
         file_names = [join(fastq_base,
-                           'Feist_11661',
+                           'Feist_2',
                            '%s_R1.fastq.gz' % x) for x in self.feist_ids]
         file_names += [join(fastq_base,
-                            'Feist_11661',
+                            'Feist_2',
                             '%s_R2.fastq.gz' % x) for x in self.feist_ids]
         file_names += [join(fastq_base,
                             'Gerwick_6123',
@@ -879,11 +879,11 @@ class TestConvertJob(unittest.TestCase):
                             'Gerwick_6123',
                             '%s_R2.fastq.gz' % x) for x in self.gerwick_ids]
         file_names += [join(fastq_base,
-                            'NYU_BMS_Melanoma_13059',
+                            'NYU_BMS_Melanoma_3',
                             '%s_R1.fastq.gz' % x) for
                        x in self.nyu_ids]
         file_names += [join(fastq_base,
-                            'NYU_BMS_Melanoma_13059',
+                            'NYU_BMS_Melanoma_3',
                             '%s_R2.fastq.gz' % x) for
                        x in self.nyu_ids]
 
@@ -1014,15 +1014,15 @@ class TestConvertJob(unittest.TestCase):
         job._get_sample_sheet_info()
 
         sample_name = 'CDPH-SAL.Salmonella.Typhi.MDL-154'
-        source_project = 'Feist_11661'
-        other_projects = ['NYU_BMS_Melanoma_13059', 'Gerwick_6123']
+        source_project = 'Feist_2'
+        other_projects = ['NYU_BMS_Melanoma_3', 'Gerwick_6123']
         dest_project = other_projects[0]
         not_source_project = other_projects[1]
         not_a_sample_name = 'NOT_A_SAMPLE_NAME'
         not_a_project = 'NOT_A_PROJECT'
 
         err_msg = ("'NOT_A_SAMPLE_NAME' did not match any 'sample_name' values"
-                   " in project 'Feist_11661'.")
+                   " in project 'Feist_2'.")
         with self.assertRaisesRegex(ValueError, err_msg):
             job.copy_sequences(not_a_sample_name,
                                source_project,
@@ -1047,8 +1047,8 @@ class TestConvertJob(unittest.TestCase):
                                source_project,
                                not_a_project)
 
-        with self.assertRaisesRegex(ValueError, "source 'Feist_11661' and "
-                                                "destination 'Feist_11661' "
+        with self.assertRaisesRegex(ValueError, "source 'Feist_2' and "
+                                                "destination 'Feist_2' "
                                                 "projects are the same"):
             job.copy_sequences(sample_name,
                                source_project,
@@ -1063,9 +1063,9 @@ class TestConvertJob(unittest.TestCase):
                          'tests/bin/bcl-convert', [], qiita_id)
 
         sample_name = 'CDPH-SAL.Salmonella.Typhi.MDL-154'
-        source_project = 'Feist_11661'
-        dest_project = 'NYU_BMS_Melanoma_13059'
-        projects = ['NYU_BMS_Melanoma_13059', 'Gerwick_6123', 'Feist_11661']
+        source_project = 'Feist_2'
+        dest_project = 'NYU_BMS_Melanoma_3'
+        projects = ['NYU_BMS_Melanoma_3', 'Gerwick_6123', 'Feist_2']
 
         # since we can't perform a real run, let's manually create a fake
         # fastq file and project directories in the 'output_dir' directory and
@@ -1077,8 +1077,8 @@ class TestConvertJob(unittest.TestCase):
             # project defined in the sample-sheet.
             makedirs(join(self.good_output_path, 'ConvertJob', some_project))
 
-        # fake a fastq file in the 'Feist_11661' directory for the purposes of
-        # copying it into the 'NYU_BMS_Melanoma_13059' project.
+        # fake a fastq file in the 'Feist_2' directory for the purposes of
+        # copying it into the 'NYU_BMS_Melanoma_3' project.
         with open(join(self.good_output_path, 'ConvertJob', source_project,
                        'CDPH-SAL_Salmonella_Typhi_MDL-154_S1_L001_R1_001.'
                        'fastq.gz'), 'w') as f:
@@ -1090,8 +1090,8 @@ class TestConvertJob(unittest.TestCase):
         job._get_sample_sheet_info()
 
         # copy all fastq files associated w/
-        # 'CDPH-SAL.Salmonella.Typhi.MDL-154' from 'Feist_11661' to
-        # 'NYU_BMS_Melanoma_13059'. 'Gerwick_6123' should remain empty; the
+        # 'CDPH-SAL.Salmonella.Typhi.MDL-154' from 'Feist_2' to
+        # 'NYU_BMS_Melanoma_3'. 'Gerwick_6123' should remain empty; the
         # code shouldn't copy anything into that project.
         job.copy_sequences(sample_name, source_project, dest_project)
 
@@ -1103,11 +1103,11 @@ class TestConvertJob(unittest.TestCase):
         source_file = sample_info['matching_files'][0]
 
         # file should have been copied here.
-        dst_file = source_file.replace('Feist_11661', 'NYU_BMS_Melanoma_13059')
+        dst_file = source_file.replace('Feist_2', 'NYU_BMS_Melanoma_3')
         self.assertTrue(exists(dst_file))
 
         # file should not have been copied here.
-        dst_file = source_file.replace('Feist_11661', 'Gerwick_6123')
+        dst_file = source_file.replace('Feist_2', 'Gerwick_6123')
         self.assertFalse(exists(dst_file))
 
     def test_copy_sequences_success_w_replicates(self):
@@ -1121,16 +1121,16 @@ class TestConvertJob(unittest.TestCase):
                          'tests/bin/bcl-convert', [], qiita_id)
 
         sample_name = 'RMA.KHP.rpoS.Mage.Q97D'
-        source_project = 'Feist_11661'
-        dest_project = 'NYU_BMS_Melanoma_13059'
-        projects = ['NYU_BMS_Melanoma_13059', 'Feist_11661']
+        source_project = 'Feist_2'
+        dest_project = 'NYU_BMS_Melanoma_3'
+        projects = ['NYU_BMS_Melanoma_3', 'Feist_2']
 
         for some_project in projects:
             makedirs(
                 join(self.good_output_path, 'ConvertJob', some_project))
 
-        # fake a fastq file in the 'Feist_11661' directory for the purposes of
-        # copying it into the 'NYU_BMS_Melanoma_13059' project.
+        # fake a fastq file in the 'Feist_2' directory for the purposes of
+        # copying it into the 'NYU_BMS_Melanoma_3' project.
 
         # instead of faking just a single fastq file, fake an R1, R2 and I1
         # fastq file for all three replicates of 'RMA.KHP.rpoS.Mage.Q97D'.
@@ -1163,8 +1163,8 @@ class TestConvertJob(unittest.TestCase):
             if smpl_info['orig_name'] == 'RMA.KHP.rpoS.Mage.Q97D':
                 files_to_match += smpl_info['matching_files']
 
-        files_to_match = [fp.replace('Feist_11661',
-                                     'NYU_BMS_Melanoma_13059')
+        files_to_match = [fp.replace('Feist_2',
+                                     'NYU_BMS_Melanoma_3')
                           for fp in files_to_match]
 
         for dst_file in files_to_match:
@@ -1187,8 +1187,8 @@ class TestConvertJob(unittest.TestCase):
             qiita_id)
 
         sample_name = 'CDPH-SAL.Salmonella.Typhi.MDL-154'
-        source_project = 'Feist_11661'
-        projects = ['NYU_BMS_Melanoma_13059', 'Gerwick_6123', 'Feist_11661']
+        source_project = 'Feist_2'
+        projects = ['NYU_BMS_Melanoma_3', 'Gerwick_6123', 'Feist_2']
 
         # since we can't perform a real run, let's manually create a fake
         # fastq file and project directories in the 'output_dir' directory and
@@ -1201,8 +1201,8 @@ class TestConvertJob(unittest.TestCase):
             makedirs(join(self.good_output_path, 'ConvertJob', some_project),
                      exist_ok=True)
 
-        # fake a fastq file in the 'Feist_11661' directory for the purposes of
-        # copying it into the 'NYU_BMS_Melanoma_13059' project.
+        # fake a fastq file in the 'Feist_2' directory for the purposes of
+        # copying it into the 'NYU_BMS_Melanoma_3' project.
         with open(join(self.good_output_path, 'ConvertJob', source_project,
                        'CDPH-SAL_Salmonella_Typhi_MDL-154_S1_L001_R1_001.'
                        'fastq.gz'), 'w') as f:
@@ -1218,11 +1218,11 @@ class TestConvertJob(unittest.TestCase):
         source_file = sample_info['matching_files'][0]
 
         # file should have been copied here.
-        dst_file = source_file.replace('Feist_11661', 'NYU_BMS_Melanoma_13059')
+        dst_file = source_file.replace('Feist_2', 'NYU_BMS_Melanoma_3')
         self.assertTrue(exists(dst_file))
 
         # file should not have been copied here.
-        dst_file = source_file.replace('Feist_11661', 'Gerwick_6123')
+        dst_file = source_file.replace('Feist_2', 'Gerwick_6123')
         self.assertFalse(exists(dst_file))
 
 

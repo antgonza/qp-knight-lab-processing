@@ -27,8 +27,8 @@ class TestNuQCJob(unittest.TestCase):
         )
         self.mmi_db_paths = [self.path("mmi.db")]
         self.project_list = [
-            "NYU_BMS_Melanoma_13059",
-            "Feist_11661",
+            "NYU_BMS_Melanoma_3",
+            "Feist_2",
             "Gerwick_6123",
         ]
         self.qiita_job_id = "abcdabcdabcdabcdabcdabcdabcdabcd"
@@ -62,7 +62,7 @@ class TestNuQCJob(unittest.TestCase):
             # strip the qiita-id from a project-name in order to test
             # NuQCJob's ability to match project directories for both new and
             # legacy project folders w/in a run-directory.
-            tmp = "Feist" if project_name == "Feist_11661" else project_name
+            tmp = "Feist" if project_name == "Feist_2" else project_name
             sample_path = self.fastq_path(tmp)
             makedirs(sample_path, exist_ok=True)
 
@@ -2270,18 +2270,18 @@ class TestNuQCJob(unittest.TestCase):
 
         # test _move_trimmed_files() by verifying that only the interleave
         # fastq files from the NYU project are moved.
-        job._move_trimmed_files("NYU_BMS_Melanoma_13059", trimmed_only_path)
+        job._move_trimmed_files("NYU_BMS_Melanoma_3", trimmed_only_path)
 
-        new_path = join(trimmed_only_path, "NYU_BMS_Melanoma_13059")
+        new_path = join(trimmed_only_path, "NYU_BMS_Melanoma_3")
 
         exp = {
-            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_13059/EP890158A02'
+            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_3/EP890158A02'
             '_S58_L001_R1_001.interleave.fastq.gz',
-            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_13059/EP023801B04'
+            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_3/EP023801B04'
             '_S27_L001_R1_001.interleave.fastq.gz',
-            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_13059/EP890158A02'
+            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_3/EP890158A02'
             '_S58_L001_R2_001.interleave.fastq.gz',
-            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_13059/EP023801B04'
+            'NuQCJob/only-adapter-filtered/NYU_BMS_Melanoma_3/EP023801B04'
             '_S27_L001_R2_001.interleave.fastq.gz'
             }
 
@@ -2292,7 +2292,7 @@ class TestNuQCJob(unittest.TestCase):
                 some_path = some_path.replace(self.path(""), "")
                 obs.append(some_path)
 
-        # confirm that only the samples in NYU_BMS_Melanoma_13059 were
+        # confirm that only the samples in NYU_BMS_Melanoma_3 were
         # moved.
         self.assertEqual(set(obs), exp)
 
